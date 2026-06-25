@@ -4,8 +4,8 @@ A production-grade **micro-frontend platform** built as a monorepo: a shell host
 that composes three independently deployable remotes at **runtime** via Webpack 5
 Module Federation, backed by a shared design system and shared utilities.
 
-[![CI](https://github.com/viren-ahire-1999/fpk/actions/workflows/ci.yml/badge.svg)](https://github.com/viren-ahire-1999/fpk/actions/workflows/ci.yml)
-[![Deploy](https://github.com/viren-ahire-1999/fpk/actions/workflows/deploy.yml/badge.svg)](https://github.com/viren-ahire-1999/fpk/actions/workflows/deploy.yml)
+[![CI](https://github.com/viren-ahire-1999/frontend-platform-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/viren-ahire-1999/frontend-platform-kit/actions/workflows/ci.yml)
+[![Deploy](https://github.com/viren-ahire-1999/frontend-platform-kit/actions/workflows/deploy.yml/badge.svg)](https://github.com/viren-ahire-1999/frontend-platform-kit/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
 **🚀 Live demo:** https://fpk-shell.pages.dev &nbsp;·&nbsp; **📚 Storybook:** https://fpk-storybook.pages.dev
