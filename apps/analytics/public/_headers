@@ -1,0 +1,4 @@
+# Allow the shell (a different origin) to load this remote's federated assets.
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, OPTIONS

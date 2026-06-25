@@ -1,0 +1,38 @@
+{
+  "name": "@fpk/analytics",
+  "version": "0.0.0",
+  "private": true,
+  "description": "FPK analytics micro-frontend. Independently deployable remote, composed by the shell at runtime.",
+  "type": "module",
+  "scripts": {
+    "dev": "webpack serve --config webpack.config.cjs --mode development",
+    "build": "webpack --config webpack.config.cjs --mode production",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "clean": "rimraf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@fpk/ui": "workspace:*",
+    "@fpk/utils": "workspace:^",
+    "@tanstack/react-query": "^5.101.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.0"
+  },
+  "devDependencies": {
+    "@fpk/eslint-config": "workspace:*",
+    "@fpk/tsconfig": "workspace:*",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "css-loader": "^7.1.4",
+    "eslint": "^9.9.0",
+    "html-webpack-plugin": "^5.6.7",
+    "rimraf": "^6.0.1",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.6.2",
+    "typescript": "^5.5.4",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3",
+    "webpack-dev-server": "^5.2.5"
+  }
+}
