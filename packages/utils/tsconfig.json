@@ -1,0 +1,13 @@
+{
+  "extends": "@fpk/tsconfig/base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": false,
+    "incremental": false,
+    "declarationMap": false,
+    "lib": ["ES2022", "DOM"],
+    "noEmit": true
+  },
+  "include": ["src"]
+}
