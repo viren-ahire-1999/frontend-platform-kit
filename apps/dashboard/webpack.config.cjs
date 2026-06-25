@@ -25,7 +25,12 @@ module.exports = (_env, argv) => {
       // "auto" lets the remote resolve its own asset URLs when loaded by a host.
       publicPath: "auto",
       path: path.resolve(__dirname, "dist"),
-      clean: true
+      clean: true,
+      // Content-hashed filenames bust browser/CDN/proxy caches on every deploy.
+      // remoteEntry.js keeps a stable name (set on ModuleFederationPlugin) so
+      // the host can always find it.
+      filename: isProd ? "[name].[contenthash].js" : "[name].js",
+      chunkFilename: isProd ? "[name].[contenthash].js" : "[name].js"
     },
     resolve: {
       extensions: [".tsx", ".ts", ".jsx", ".js"]

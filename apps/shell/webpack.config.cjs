@@ -27,7 +27,11 @@ module.exports = (_env, argv) => {
       // /dashboard/reports still resolve main.js and chunks correctly.
       publicPath: "/",
       path: path.resolve(__dirname, "dist"),
-      clean: true
+      clean: true,
+      // Content-hashed filenames bust browser/CDN/proxy caches on every deploy,
+      // so a new release never serves stale JS/CSS chunks.
+      filename: isProd ? "[name].[contenthash].js" : "[name].js",
+      chunkFilename: isProd ? "[name].[contenthash].js" : "[name].js"
     },
     resolve: {
       extensions: [".tsx", ".ts", ".jsx", ".js"]
