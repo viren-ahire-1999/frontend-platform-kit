@@ -1,0 +1,10 @@
+{
+  "//": "Preset for shareable React libraries (e.g. @fpk/ui). Emits declarations for consumers.",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "outDir": "dist",
+    "rootDir": "src"
+  }
+}

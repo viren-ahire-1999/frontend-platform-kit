@@ -1,0 +1,12 @@
+{
+  "//": "Preset for deployable React apps (shell + remotes). Bundler handles emit, so tsc is type-check only.",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true
+  }
+}
