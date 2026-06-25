@@ -1,0 +1,27 @@
+.fpk-card {
+  background: var(--fpk-color-surface);
+  border: 1px solid var(--fpk-color-border);
+  border-radius: var(--fpk-radius-lg);
+  box-shadow: var(--fpk-shadow-sm);
+  overflow: hidden;
+  font-family: var(--fpk-font-sans);
+  color: var(--fpk-color-fg);
+}
+
+.fpk-card__header {
+  padding: var(--fpk-space-4) var(--fpk-space-5);
+  border-bottom: 1px solid var(--fpk-color-border);
+  font-weight: var(--fpk-font-weight-semibold);
+  font-size: var(--fpk-font-size-md);
+}
+
+.fpk-card__body {
+  padding: var(--fpk-space-5);
+  font-size: var(--fpk-font-size-sm);
+}
+
+.fpk-card__footer {
+  padding: var(--fpk-space-4) var(--fpk-space-5);
+  border-top: 1px solid var(--fpk-color-border);
+  background: var(--fpk-color-surface-muted);
+}

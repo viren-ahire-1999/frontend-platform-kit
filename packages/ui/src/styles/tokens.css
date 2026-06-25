@@ -1,0 +1,70 @@
+/**
+ * FPK design tokens, exposed as CSS custom properties.
+ * Components reference these vars so the whole system can be themed by
+ * overriding :root (or any scope) without touching component CSS.
+ */
+:root {
+  /* Surfaces & text (neutral) */
+  --fpk-color-bg: #ffffff;
+  --fpk-color-surface: #ffffff;
+  --fpk-color-surface-muted: #fafafa;
+  --fpk-color-fg: #1a1d23;
+  --fpk-color-muted: #6b7280;
+  --fpk-color-border: #e5e7eb;
+  --fpk-color-border-strong: #d1d5db;
+
+  /* Brand / primary */
+  --fpk-color-primary: #4f46e5;
+  --fpk-color-primary-hover: #4338ca;
+  --fpk-color-primary-active: #3730a3;
+  --fpk-color-primary-fg: #ffffff;
+
+  /* Semantic */
+  --fpk-color-success: #16a34a;
+  --fpk-color-success-bg: #dcfce7;
+  --fpk-color-success-fg: #15803d;
+  --fpk-color-danger: #dc2626;
+  --fpk-color-danger-hover: #b91c1c;
+  --fpk-color-danger-bg: #fee2e2;
+  --fpk-color-danger-fg: #b91c1c;
+  --fpk-color-warning: #d97706;
+  --fpk-color-warning-bg: #fef3c7;
+  --fpk-color-warning-fg: #b45309;
+  --fpk-color-info: #2563eb;
+  --fpk-color-info-bg: #dbeafe;
+  --fpk-color-info-fg: #1d4ed8;
+
+  /* Spacing scale (4px base) */
+  --fpk-space-1: 4px;
+  --fpk-space-2: 8px;
+  --fpk-space-3: 12px;
+  --fpk-space-4: 16px;
+  --fpk-space-5: 24px;
+  --fpk-space-6: 32px;
+  --fpk-space-8: 48px;
+
+  /* Radius */
+  --fpk-radius-sm: 6px;
+  --fpk-radius-md: 8px;
+  --fpk-radius-lg: 12px;
+  --fpk-radius-full: 9999px;
+
+  /* Typography */
+  --fpk-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --fpk-font-size-xs: 12px;
+  --fpk-font-size-sm: 14px;
+  --fpk-font-size-md: 16px;
+  --fpk-font-size-lg: 18px;
+  --fpk-font-weight-regular: 400;
+  --fpk-font-weight-medium: 500;
+  --fpk-font-weight-semibold: 600;
+
+  /* Elevation */
+  --fpk-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06),
+    0 1px 3px rgba(16, 24, 40, 0.1);
+  --fpk-shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.1),
+    0 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --fpk-shadow-lg: 0 12px 16px -4px rgba(16, 24, 40, 0.08),
+    0 4px 6px -2px rgba(16, 24, 40, 0.03);
+}

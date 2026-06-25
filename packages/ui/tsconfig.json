@@ -1,0 +1,12 @@
+{
+  "extends": "@fpk/tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": false,
+    "incremental": false,
+    "declarationMap": false,
+    "noEmit": true
+  },
+  "include": ["src"]
+}

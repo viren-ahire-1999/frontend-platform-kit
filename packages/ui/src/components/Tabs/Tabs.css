@@ -1,0 +1,35 @@
+.fpk-tabs {
+  display: inline-flex;
+  gap: var(--fpk-space-1);
+  padding: var(--fpk-space-1);
+  background: var(--fpk-color-surface-muted);
+  border: 1px solid var(--fpk-color-border);
+  border-radius: var(--fpk-radius-md);
+}
+
+.fpk-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--fpk-space-2) var(--fpk-space-4);
+  font-family: var(--fpk-font-sans);
+  font-size: var(--fpk-font-size-sm);
+  font-weight: var(--fpk-font-weight-medium);
+  color: var(--fpk-color-muted);
+  text-decoration: none;
+  border-radius: var(--fpk-radius-sm);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.fpk-tab:hover {
+  color: var(--fpk-color-fg);
+}
+
+.fpk-tab--active {
+  background: var(--fpk-color-surface);
+  color: var(--fpk-color-fg);
+  box-shadow: var(--fpk-shadow-sm);
+}

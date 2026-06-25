@@ -1,0 +1,18 @@
+.fpk-select {
+  height: 40px;
+  padding: 0 var(--fpk-space-3);
+  font-family: inherit;
+  font-size: var(--fpk-font-size-sm);
+  color: var(--fpk-color-fg);
+  background: var(--fpk-color-surface);
+  border: 1px solid var(--fpk-color-border-strong);
+  border-radius: var(--fpk-radius-md);
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.fpk-select:focus {
+  outline: none;
+  border-color: var(--fpk-color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
