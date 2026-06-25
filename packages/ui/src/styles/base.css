@@ -1,0 +1,13 @@
+/**
+ * Base page styles for any FPK surface (the shell or a standalone remote).
+ * Kept minimal and token-driven so a remote opened on its own URL looks
+ * consistent with how it renders mounted inside the host shell.
+ */
+body {
+  margin: 0;
+  font-family: var(--fpk-font-sans);
+  color: var(--fpk-color-fg);
+  background: var(--fpk-color-surface-muted);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

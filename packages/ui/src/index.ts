@@ -5,6 +5,7 @@
  * once via "@fpk/ui/styles.css" (which includes the design tokens).
  */
 import "./styles/tokens.css";
+import "./styles/base.css";
 
 export { Button } from "./components/Button/Button";
 export type {
