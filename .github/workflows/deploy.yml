@@ -1,0 +1,84 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Cloudflare Pages projects are independent, so each app deploys on its own.
+# Required repo secrets:
+#   CLOUDFLARE_API_TOKEN  - token with "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID - your Cloudflare account id
+# Create the Pages projects once (Direct Upload type) named:
+#   fpk-shell, fpk-dashboard, fpk-analytics, fpk-settings, fpk-storybook
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build apps
+        run: pnpm build
+
+      - name: Build Storybook
+        run: pnpm --filter @fpk/ui build-storybook
+
+      - name: Inject production runtime config + CORS headers
+        run: |
+          cp apps/shell/public/config.production.js apps/shell/dist/config.js
+          cp apps/dashboard/public/_headers apps/dashboard/dist/_headers
+          cp apps/analytics/public/_headers apps/analytics/dist/_headers
+          cp apps/settings/public/_headers apps/settings/dist/_headers
+
+      - name: Deploy dashboard remote
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy apps/dashboard/dist --project-name=fpk-dashboard --branch=main
+
+      - name: Deploy analytics remote
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy apps/analytics/dist --project-name=fpk-analytics --branch=main
+
+      - name: Deploy settings remote
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy apps/settings/dist --project-name=fpk-settings --branch=main
+
+      - name: Deploy shell host
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy apps/shell/dist --project-name=fpk-shell --branch=main
+
+      - name: Deploy Storybook
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy packages/ui/storybook-static --project-name=fpk-storybook --branch=main
