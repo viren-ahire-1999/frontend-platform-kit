@@ -13,6 +13,26 @@ Module Federation, backed by a shared design system and shared utilities.
 > Each remote is its own Cloudflare Pages deployment on its own origin. The shell
 > discovers them at runtime from a swappable `config.js` — change one URL, no rebuild.
 
+## Screenshots
+
+**Shell composing the dashboard remote** — host chrome (sidebar/nav) wrapping a federated remote:
+
+![Shell hosting the dashboard remote](./docs/shell-dashboard.png)
+
+**Analytics remote running standalone** — the same remote on its own origin, fully styled by the shared design system:
+
+![Analytics remote standalone](./docs/analytics.png)
+
+## Highlights
+
+- **Runtime Module Federation** — the host loads remotes from a swappable `config.js`; no remote URLs are baked into the bundle.
+- **Independent deploys** — five separate Cloudflare Pages projects (host + 3 remotes + Storybook), each shipping on its own cadence.
+- **Resilient composition** — every remote is wrapped in a `Suspense` boundary and a per-remote error boundary, so one failing remote never blanks the app.
+- **Shared singletons** — React, React Router, and TanStack Query are shared once across all remotes to avoid duplication and context mismatches.
+- **Shared design system** — `@fpk/ui` (built with tsup, documented in Storybook, tested with Vitest) gives every surface a consistent look, even standalone.
+- **Cache-safe releases** — content-hashed asset filenames guarantee fresh JS/CSS on every deploy (no stale-cache surprises).
+- **CI/CD** — GitHub Actions runs lint, typecheck, test, and build on every PR, and auto-deploys all five projects on push to `main`.
+
 ---
 
 ## Why this exists
@@ -126,10 +146,12 @@ Each app deploys independently via GitHub Actions on push to `main`.
 
 **One-time setup:**
 
-1. Create 5 Cloudflare Pages projects (Direct Upload):
-   `fpk-shell`, `fpk-dashboard`, `fpk-analytics`, `fpk-settings`, `fpk-storybook`.
-2. Add repo secrets: `CLOUDFLARE_API_TOKEN` (Pages: Edit) and `CLOUDFLARE_ACCOUNT_ID`.
-3. If any `*.pages.dev` name is taken, adjust the project name in
+1. Add two repo secrets: `CLOUDFLARE_API_TOKEN` (with **Cloudflare Pages: Edit**)
+   and `CLOUDFLARE_ACCOUNT_ID`.
+2. Push to `main`. The workflow **creates the five Pages projects automatically**
+   (`fpk-shell`, `fpk-dashboard`, `fpk-analytics`, `fpk-settings`, `fpk-storybook`)
+   and deploys each one — no manual dashboard setup required.
+3. If any `*.pages.dev` name is globally taken, adjust the project name in
    `.github/workflows/deploy.yml` **and** the matching URL in
    `apps/shell/public/config.production.js`.
 
