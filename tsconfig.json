@@ -1,0 +1,5 @@
+{
+  "//": "Solution-style root config for editor tooling. Packages build via their own tooling (tsup for @fpk/ui) and are type-checked through `turbo run typecheck`, so no project references are needed here.",
+  "files": [],
+  "references": []
+}

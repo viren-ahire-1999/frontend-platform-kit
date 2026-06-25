@@ -1,0 +1,4 @@
+{
+  "//": "Thin alias to the shared base preset. The real options live in @fpk/tsconfig/base.json so bundler tsconfig resolvers (e.g. Vite/oxc) never have to escape pnpm symlinks via relative paths.",
+  "extends": "@fpk/tsconfig/base.json"
+}
